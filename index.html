@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>jQuery</title>
+</head>
+<body>
+    <h3>String</h3>
+    <textarea id='textarea' cols='50' rows='4' name='comment'></textarea>
+    <h3>RegExp</h3>
+    <form id='target'>
+          <input type='text' id='regex'>
+    </form>
+    <div>
+        <h3>Result</h3>
+        <div id='res'></div>
+    </div>
+
+    <script src='https://code.jquery.com/jquery-1.10.2.js'></script>
+    <script type='text/javascript'>
+    	var $ = document.querySelector.bind(document)
+        var regex = $('#regex')//var $regex = $('#regex')
+        var textarea = $('#textarea')//var $textarea = $('#textarea')
+        var res = document.querySelector('#res')//var $res = $('#res')
+
+        
+        regex.addEventListener('keyup',function(event){
+            var bla = regex.value //$
+            var reg = new RegExp(bla, 'g') 
+        	var match = textarea.value.match(reg)
+            
+            var docfrag = document.createDocumentFragment()
+
+
+            /*var rest = '<li>' + res.join('</li><li>') 
+            console.log(rest)
+          
+            $res.html(rest)*/
+            
+            res.innerHTML = ''
+
+            match.forEach(function(item){
+                 var a = document.createElement('li')//var li = $('<li>')
+                 a.innerHTML = item 
+                 docfrag.appendChild(a) 
+                 console.log(a)  //for each
+
+            })
+
+            res.appendChild(docfrag)
+            /*var rest = res.map(function(item){
+                return  '<li>' + item + '</li>'
+            }).join (') //map*/
+
+             /*var rest = res.reduce(function(sum, item){
+                return sum + '<li>' + item + '</li>' 
+             },') //reduce
+  
+               
+
+            $res.html(rest)*/
+        })
+        
+
+          
+           
+
+
+    </script>
+</body>
+</html>
